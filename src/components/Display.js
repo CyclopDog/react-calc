@@ -2,7 +2,7 @@ import React from 'react'
 
 const Display = (props) => {
   return (
-    <h1>{String(props.result)}</h1>
+    <div>{String(props.result)}</div>
   )
 }
 

@@ -1,0 +1,53 @@
+$width: 700px;
+
+#root {
+  display: flex;
+  width: $width;
+  >div>div:first-child {
+    display: flex;
+    width: $width; 
+    height: 100px;
+    background-color: gray;
+    justify-content: flex-end;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 60px;
+    font-weight: bold;
+  }
+  >div>div:last-child {
+    div {
+      height: 100px;
+      width: $width;
+      display: flex;
+      justify-content: space-between;
+      button {
+        background-color: lightgray;
+        color: black;
+        width: $width/4;
+        border: 1.5px solid rgb(170, 170, 170);
+        font-size: 30px;
+      }
+      :first-child {
+        border-left: none;
+      }
+      :last-child {
+        background-color: darkorange;
+        border-right: none;
+      }
+    }
+    :first-child {
+      button {
+        border-top: none;
+      }
+    }
+    :last-child {
+      button {
+        border-bottom: none;
+      }
+      :first-child {
+        width: $width/2;
+      }
+    }
+  }
+}

@@ -22,9 +22,7 @@ $width: 700px;
       display: flex;
       justify-content: space-between;
       button {
-        background-color: lightgray;
         color: black;
-        width: $width/4;
         border: 1.5px solid rgb(170, 170, 170);
         font-size: 30px;
       }
@@ -32,7 +30,6 @@ $width: 700px;
         border-left: none;
       }
       :last-child {
-        background-color: darkorange;
         border-right: none;
       }
     }
@@ -45,9 +42,11 @@ $width: 700px;
       button {
         border-bottom: none;
       }
-      :first-child {
-        width: $width/2;
-      }
     }
   }
 }
+
+.gray {background-color: lightgray;}
+.orange {background-color: darkorange;}
+.wide1 {width: $width/4;}
+.wide2 {width: $width/2;}

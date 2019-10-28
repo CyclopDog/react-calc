@@ -7,9 +7,9 @@ const calculate = (calculator, buttonName = '') => {
     switch (buttonName) {
       case 'AC':
         return {
-          total: 0,
-          next: 0,
-          operation: ''
+          total: null,
+          next: null,
+          operation: null
         }
 
       case '+/-':

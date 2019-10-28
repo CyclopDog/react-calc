@@ -6,25 +6,25 @@ const operate = (numberOne, numberTwo, operation) => {
   Big.DP = 15
   switch (operation) {
     case '÷':
-      x.div(y)
-      break
+      if (y === '0') {
+        alert('Divide by 0 error')
+        return '0'
+      } else {
+        return x.div(y).toString()
+      }
 
     case 'X':
-      x.times(y)
-      break
+      return x.times(y).toString()
 
     case '-':
-      x.minus(y)
-      break
+      return x.minus(y).toString()
 
     case '+':
-      x.plus(y)
-      break
+      return x.plus(y).toString()
 
     default:
       break
   }
-  return x
 }
 
 export default operate

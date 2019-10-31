@@ -47,22 +47,10 @@ const calculate = (calculator, buttonName = '') => {
         return {}
 
       case '%':
-        if (calculator.operation && calculator.next) {
-          const result = operate(calculator.total, calculator.next, calculator.operation)
-          return {
-            total: Big(result)
-              .div(Big('100'))
-              .toString(),
-            next: null,
-            operation: null
-          }
-        }
-        if (calculator.next) {
-          return {
-            next: Big(calculator.next)
-              .div(Big('100'))
-              .toString()
-          }
+        if (calculator.total && !calculator.next) { 
+          return { total: Big(calculator.total).div(100).toString() }
+        } else if (calculator.next) {
+          return { total: Big(calculator.next).div(100).toString() }
         }
         return {}
 

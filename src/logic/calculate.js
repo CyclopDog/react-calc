@@ -3,7 +3,7 @@ import Big from 'big.js'
 
 const calculate = (calculator, buttonName = '') => {
   if (isFinite(buttonName) && !calculator.operation) {
-    if (calculator.total !== null && calculator.total) {
+    if (calculator.total) {
       calculator.total += buttonName
     } else {
       calculator.total = buttonName
@@ -12,7 +12,7 @@ const calculate = (calculator, buttonName = '') => {
     calculator.operation = null
     calculator.total = buttonName
   } else if (calculator.total && isFinite(buttonName) && calculator.operation) {
-    if (calculator.next !== null && calculator.next) {
+    if (calculator.next) {
       calculator.next += buttonName
     } else {
       calculator.next = buttonName

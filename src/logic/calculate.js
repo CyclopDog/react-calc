@@ -2,8 +2,33 @@ import operate from './operate'
 import Big from 'big.js'
 
 const calculate = (calculator, buttonName = '') => {
+  if (isFinite(buttonName) && !calculator.operation) {
+    if (calculator.total !== null && calculator.total) {
+      calculator.total += buttonName
+    } else {
+      calculator.total = buttonName
+    }
+  } else if (isFinite(buttonName) && calculator.operation === '=') {
+    calculator.operation = null
+    calculator.total = buttonName
+  } else if (calculator.total && isFinite(buttonName) && calculator.operation) {
+    if (calculator.next !== null && calculator.next) {
+      calculator.next += buttonName
+    } else {
+      calculator.next = buttonName
+    }
+  }
   if (!isFinite(buttonName)) {
-    calculator.operation = buttonName
+    if (calculator.operation && calculator.next && buttonName !== '.') {
+      calculator.total = operate(calculator.total, calculator.next, calculator.operation)
+      calculator.next = null
+      calculator.operation = null
+    }
+
+    if (buttonName !== '.') {
+      calculator.operation = buttonName
+    }
+
     switch (buttonName) {
       case 'AC':
         return {
@@ -42,7 +67,13 @@ const calculate = (calculator, buttonName = '') => {
         return {}
 
       case '.':
-        if (calculator.next) {
+        if (calculator.total.includes('.') && !calculator.next) {
+          return calculator
+        } else if (!calculator.total) {
+          return { total: '0.' }
+        } else if (calculator.total && !calculator.next) {
+          return { total: calculator.total + '.' }
+        } else if (calculator.next) {
           if (calculator.next.includes('.')) {
             return {}
           }
@@ -62,25 +93,9 @@ const calculate = (calculator, buttonName = '') => {
         }
 
       default:
-        if (calculator.next && calculator.operation) {
-          return {
-            total: operate(calculator.total, calculator.next, calculator.operation),
-            next: null,
-            operation: null
-          }
-        } else {
-          return {}
-        }
     }
-  } else {
-    if (calculator.total === 0) {
-      calculator.total += calculator.next
-    } else {
-      const calc = calculator.total + buttonName
-      calculator.total = parseInt(calc)
-    }
-    return calculator
   }
+  return calculator
 }
 
 export default calculate

@@ -1,21 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = (props) => {
-  return (
-    <button style={{ backgroundColor: props.color }} className={props.wide}>
-      {String(props.name)}
-    </button>
-  )
+class Button extends React.Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired
+  }
+
+   handleClick (buttonName) {
+    this.props.clickHandler(buttonName)
+  }
+
+  render() {
+    return (
+      <button style={{ backgroundColor: this.props.color }} className={this.props.wide} onClick={this.handleClick.bind(this, this.props.name)}>
+        {this.props.name}
+      </button>
+    )
+  }
 }
 
 Button.defaultProps = {
   color: 'orange',
   wide: 'wide1'
-}
-
-Button.propTypes = {
-  name: PropTypes.string.isRequired
 }
 
 export default Button

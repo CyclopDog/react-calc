@@ -6,7 +6,7 @@ const operate = (numberOne, numberTwo, operation) => {
   Big.DP = 15
   switch (operation) {
     case '÷':
-      if (y === '0') {
+      if (y.c[0] === 0) {
         alert('Divide by 0 error')
         return '0'
       } else {

@@ -25,7 +25,7 @@ const calculate = (calculator, buttonName = '') => {
       calculator.operation = null
     }
 
-    if (buttonName !== '.') {
+    if (buttonName !== '.' || buttonName !== '%') {
       calculator.operation = buttonName
     }
 
@@ -47,10 +47,10 @@ const calculate = (calculator, buttonName = '') => {
         return {}
 
       case '%':
-        if (calculator.total && !calculator.next) { 
+        if (calculator.total && !calculator.next) {
           return { total: Big(calculator.total).div(100).toString() }
         } else if (calculator.next) {
-          return { total: Big(calculator.next).div(100).toString() }
+          return { next: Big(calculator.next).div(100).toString() }
         }
         return {}
 

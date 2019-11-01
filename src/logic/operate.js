@@ -7,7 +7,7 @@ const operate = (numberOne, numberTwo, operation) => {
   switch (operation) {
     case '÷':
       if (y.c[0] === 0) {
-        alert('Divide by 0 error')
+        alert('You Shall Not Divide By 0!')
         return '0'
       } else {
         return x.div(y).toString()

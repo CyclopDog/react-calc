@@ -25,7 +25,7 @@ const calculate = (calculator, buttonName = '') => {
       calculator.operation = null
     }
 
-    if (buttonName !== '.' || buttonName !== '%') {
+    if (buttonName !== '.' && buttonName !== '%') {
       calculator.operation = buttonName
     }
 
